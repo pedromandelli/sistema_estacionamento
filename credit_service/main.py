@@ -6,9 +6,9 @@ import uvicorn
 
 app = FastAPI()
 
-uri = ""
+uri = "mongodb+srv://pbalconimandelli:LtwoROD0lfsCYF7i@embarcados.soia3gj.mongodb.net/?retryWrites=true&w=majority&appName=Embarcados"
 client = MongoClient(uri)
-db = client.Cluster0
+db = client.Embarcados
 credits_collection = db.get_collection("credits")
 
 class Credit(BaseModel):

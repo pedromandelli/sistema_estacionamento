@@ -7,9 +7,9 @@ import httpx
 
 app = FastAPI()
 
-uri = ""
+uri = "mongodb+srv://pbalconimandelli:LtwoROD0lfsCYF7i@embarcados.soia3gj.mongodb.net/?retryWrites=true&w=majority&appName=Embarcados"
 client = MongoClient(uri)
-db = client.Cluster0
+db = client.Embarcados
 access_log_collection = db.get_collection("access_log")
 users_collection = db.get_collection("users")
 credits_collection = db.get_collection("credits")
