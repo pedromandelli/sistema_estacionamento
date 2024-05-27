@@ -28,7 +28,7 @@ class UserModel(BaseModel):
     category: str
 
 @app.post("/users/")
-async def create_user(user: UserModel):
+async def create_user(user: UserModel):ded
     user_exists = users_collection.find_one({"cpf": user.cpf})
     if user_exists:
         raise HTTPException(status_code=400, detail="User already exists")
