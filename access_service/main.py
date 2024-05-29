@@ -22,9 +22,6 @@ uri = "mongodb+srv://pbalconimandelli:LtwoROD0lfsCYF7i@embarcados.soia3gj.mongod
 client = MongoClient(uri, tls=True, tlsAllowInvalidCertificates=True)
 db = client.Embarcados
 access_log_collection = db.get_collection("access_log")
-users_collection = db.get_collection("users")
-credits_collection = db.get_collection("credits")
-spots_collection = db.get_collection("spots")
 
 class AccessModel(BaseModel):
     id: Optional[PyObjectId] = Field(alias="_id", default=None)
