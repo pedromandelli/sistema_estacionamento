@@ -25,7 +25,7 @@ class UserModel(BaseModel):
     id: Optional[PyObjectId] = Field(alias="_id", default=None)
     cpf: str
     name: str
-    category: str = Field(..., regex="^(estudante|professor|TAE|visitante)$")
+    category: str = Field(..., pattern="^(estudante|professor|TAE|visitante)$")
 
 @app.post("/users/")
 async def create_user(user: UserModel):
