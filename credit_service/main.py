@@ -48,5 +48,13 @@ async def get_credit(cpf: str):
         return CreditModel(**credit_data)
     raise HTTPException(status_code=404, detail="Credit not found")
 
+@app.post("/credits/{cpf}/decrement")
+async def decrement_credits(cpf: str):
+    credit = credits_collection.find_one({"cpf": cpf})
+    if not credit or credit["amount"] <= 0:
+        raise HTTPException(status_code=400, detail="Insufficient credits")
+    credits_collection.update_one({"cpf": cpf}, {"$inc": {"amount": -1}})
+    return {"message": "Credits decremented"}
+
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8002)
